@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es-AR">
 <head>
   <meta charset="utf-8">
@@ -31,6 +31,7 @@
         Repasá selectores, cascada, modelo de caja y unidades con preguntas de opción múltiple.
         En las preguntas con código vas a poder editar el ejemplo y ver el resultado en vivo.
       </p>
+      <!-- role="list": Safari deja de anunciar como lista las que tienen list-style: none. -->
       <ul class="cifras" role="list">
         <li><strong id="cantidad-total">0</strong> preguntas</li>
         <li><strong id="cantidad-basicas">0</strong> básicas</li>
@@ -51,7 +52,7 @@
     <section id="cuestionario" class="pantalla" aria-labelledby="numero-pregunta" hidden>
       <header class="cabecera">
         <div class="cabecera-fila">
-          <h2 id="numero-pregunta" tabindex="-1"></h2>
+          <h2 id="numero-pregunta" tabindex="-1">Pregunta</h2>
           <p id="aciertos" class="aciertos"></p>
         </div>
         <progress id="progreso" aria-labelledby="numero-pregunta"></progress>
@@ -73,14 +74,69 @@
               <figcaption id="rotulo-css">CSS</figcaption>
               <div class="panel-cuerpo">
                 <pre class="fuente"><code></code></pre>
+                <pre class="numeros" aria-hidden="true" hidden></pre>
+                <textarea class="editor" aria-labelledby="rotulo-css" aria-describedby="ayuda-editor"
+                  spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" hidden></textarea>
               </div>
             </figure>
             <figure class="panel" data-lenguaje="html">
               <figcaption id="rotulo-html">HTML</figcaption>
               <div class="panel-cuerpo">
                 <pre class="fuente"><code></code></pre>
+                <pre class="numeros" aria-hidden="true" hidden></pre>
+                <textarea class="editor" aria-labelledby="rotulo-html" aria-describedby="ayuda-editor"
+                  spellcheck="false" autocomplete="off" autocapitalize="off" autocorrect="off" hidden></textarea>
               </div>
             </figure>
+          </div>
+
+          <div class="codigo-acciones">
+            <button type="button" class="btn destacado boton-probar" aria-describedby="ayuda-probar" disabled>
+              <span aria-hidden="true">▶</span> Probar en vivo
+            </button>
+            <button type="button" class="btn boton-restaurar" hidden>Restaurar código original</button>
+            <p id="ayuda-probar" class="ayuda ayuda-probar"></p>
+            <p id="ayuda-editor" class="ayuda ayuda-editor" hidden>
+              El resultado se actualiza mientras escribís. <kbd>Tab</kbd> inserta dos espacios;
+              para salir del editor con el teclado, presioná <kbd>Esc</kbd> y después <kbd>Tab</kbd>.
+            </p>
+          </div>
+
+          <div class="vivo" hidden>
+            <figure class="resultado">
+              <figcaption>Resultado</figcaption>
+              <div class="vista">
+                <iframe title="Resultado del código" sandbox="allow-same-origin"></iframe>
+                <div class="contorno" aria-hidden="true" hidden>
+                  <div class="capa capa-margen"></div>
+                  <div class="capa capa-borde"></div>
+                  <div class="capa capa-relleno"></div>
+                  <div class="capa capa-contenido"></div>
+                </div>
+              </div>
+              <ul class="leyenda" role="list" aria-label="Colores del dibujo">
+                <li><span class="muestra muestra--margen" aria-hidden="true"></span>margen</li>
+                <li><span class="muestra muestra--borde" aria-hidden="true"></span>borde</li>
+                <li><span class="muestra muestra--relleno" aria-hidden="true"></span>relleno</li>
+                <li><span class="muestra muestra--contenido" aria-hidden="true"></span>contenido</li>
+              </ul>
+            </figure>
+
+            <section class="inspector" aria-labelledby="titulo-inspector">
+              <h4 id="titulo-inspector">Inspector</h4>
+              <p class="ayuda">Pasá el mouse por el resultado o elegí un elemento de la lista.</p>
+              <label class="inspector-etiqueta" for="inspector-lista">Elemento</label>
+              <select id="inspector-lista" class="inspector-lista"></select>
+              <dl class="inspector-datos">
+                <div><dt>Ancho</dt><dd data-dato="ancho">—</dd></div>
+                <div><dt>Alto</dt><dd data-dato="alto">—</dd></div>
+                <div><dt><code>color</code></dt><dd data-dato="color">—</dd></div>
+                <div><dt><code>padding</code></dt><dd data-dato="padding">—</dd></div>
+                <div><dt><code>border-width</code></dt><dd data-dato="borde">—</dd></div>
+                <div><dt><code>margin</code></dt><dd data-dato="margen">—</dd></div>
+              </dl>
+              <p class="vh inspector-anuncio" aria-live="polite"></p>
+            </section>
           </div>
         </section>
 
@@ -126,8 +182,8 @@
       <h2 id="titulo-dialogo">¿Empezar de cero?</h2>
       <p id="texto-dialogo">Se va a borrar tu progreso y las preguntas se van a mezclar de nuevo.</p>
       <div class="acciones">
-        <button value="cancelar" class="btn" autofocus>Cancelar</button>
-        <button value="confirmar" class="btn primario">Sí, empezar de cero</button>
+        <button type="submit" value="cancelar" class="btn" autofocus>Cancelar</button>
+        <button type="submit" value="confirmar" class="btn primario">Sí, empezar de cero</button>
       </div>
     </form>
   </dialog>

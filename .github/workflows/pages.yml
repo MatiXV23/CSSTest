@@ -1,0 +1,42 @@
+# Publica el sitio en GitHub Pages cada vez que se sube código a la rama por defecto.
+# Requiere: Settings → Pages → Build and deployment → Source: GitHub Actions.
+name: Publicar en GitHub Pages
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Una publicación a la vez; si hay una en curso, se deja terminar.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    # Solo publica desde la rama por defecto del repositorio (main o la que esté configurada).
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v5
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      # El sitio es estático y no tiene paso de build: se publica la carpeta tal cual.
+      - name: Empaquetar el sitio
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+
+      - name: Publicar
+        id: despliegue
+        uses: actions/deploy-pages@v4

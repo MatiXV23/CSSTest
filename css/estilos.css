@@ -26,6 +26,7 @@
   --sombra: 0 1px 2px rgb(20 10 30 / 0.05), 0 6px 20px rgb(20 10 30 / 0.06);
   --radio: 16px;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --ancho-numeros: 2.75rem;
 
   /* Colores del resaltado de sintaxis */
   --sintaxis-selector: #a3134a;
@@ -36,6 +37,13 @@
   --sintaxis-comentario: #6b6577;
   --sintaxis-arroba: #7a2ca3;
   --sintaxis-puntuacion: #5f5a69;
+
+  /* Capas del inspector: van sobre el fondo blanco del resultado, no cambian con el tema. */
+  --capa-margen: rgb(246 178 107 / 0.6);
+  --capa-borde: rgb(255 214 102 / 0.75);
+  --capa-relleno: rgb(147 196 125 / 0.6);
+  --capa-contenido: rgb(111 168 220 / 0.55);
+  --capa-contorno: #b3134f;
 
   accent-color: var(--acento);
 }
@@ -201,6 +209,15 @@ pre code {
 .btn.primario:hover:not(:disabled) {
   background: var(--acento);
   filter: brightness(1.08);
+}
+
+.btn.destacado {
+  border-color: var(--acento);
+  color: var(--acento);
+}
+
+.btn.destacado:hover:not(:disabled) {
+  background: var(--acento-suave);
 }
 
 .btn.enlace {
@@ -673,7 +690,6 @@ progress {
  * Las líneas largas se parten y siguen alineadas a la derecha del número.
  */
 .fuente {
-  --ancho-numeros: 2.75rem;
   flex: 1;
   min-width: 0;
   padding: 0.75rem 0.75rem 0.75rem 0;
@@ -743,6 +759,231 @@ progress {
 
 .sintaxis-puntuacion {
   color: var(--sintaxis-puntuacion);
+}
+
+/* ---------- Edición en vivo ---------- */
+
+.codigo-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.ayuda-editor {
+  flex-basis: 100%;
+}
+
+/* En modo edición, los números van en una columna aparte (el textarea no admite contadores). */
+.numeros {
+  flex: none;
+  width: var(--ancho-numeros);
+  padding: 0.75rem 0.6rem 0.75rem 0;
+  border-right: 1px solid var(--borde);
+  background: var(--superficie-2);
+  color: var(--texto-suave);
+  text-align: right;
+  user-select: none;
+}
+
+.editor {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0.75rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--superficie);
+  color: var(--texto);
+  font: 400 0.875rem/1.6 var(--mono);
+  tab-size: 2;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+  resize: none;
+}
+
+/* El panel recorta lo que sobresale, así que el foco se dibuja hacia adentro. */
+.editor:focus-visible {
+  outline-offset: -3px;
+}
+
+.panel:has(.editor:not([hidden])) figcaption::after {
+  content: " · editable";
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.vivo {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+@container (min-width: 40rem) {
+  .vivo {
+    grid-template-columns: minmax(0, 3fr) minmax(15rem, 2fr);
+    align-items: start;
+  }
+}
+
+.resultado {
+  min-width: 0;
+  margin: 0;
+}
+
+.resultado figcaption,
+.inspector-etiqueta {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.vista {
+  position: relative;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.vista iframe {
+  display: block;
+  width: 100%;
+  height: 160px;
+  border: 0;
+  background: #fff;
+}
+
+/* El dibujo del inspector va encima del iframe y deja pasar el mouse. */
+.contorno {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.capa {
+  position: absolute;
+  border: 0 solid transparent;
+}
+
+.capa-margen {
+  border-color: var(--capa-margen);
+}
+
+.capa-borde {
+  border-color: var(--capa-borde);
+  outline: 2px solid var(--capa-contorno);
+}
+
+.capa-relleno {
+  border-color: var(--capa-relleno);
+}
+
+.capa-contenido {
+  background: var(--capa-contenido);
+}
+
+.leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  color: var(--texto-suave);
+  font-size: 0.8125rem;
+  list-style: none;
+}
+
+.leyenda li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.muestra,
+.muestra-color {
+  flex: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 1px solid var(--borde);
+  border-radius: 3px;
+}
+
+.muestra--margen {
+  background: var(--capa-margen);
+}
+
+.muestra--borde {
+  background: var(--capa-borde);
+}
+
+.muestra--relleno {
+  background: var(--capa-relleno);
+}
+
+.muestra--contenido {
+  background: var(--capa-contenido);
+}
+
+.inspector {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+}
+
+.inspector h4 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.inspector .ayuda {
+  margin-bottom: 0.85rem;
+}
+
+.inspector-lista {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  background: var(--superficie);
+  color: var(--texto);
+  font: 0.875rem var(--mono);
+}
+
+.inspector-datos {
+  display: grid;
+  gap: 0.4rem;
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+}
+
+.inspector-datos div {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.inspector-datos dt {
+  color: var(--texto-suave);
+}
+
+.inspector-datos dd {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
 }
 
 /* ---------- Resultados ---------- */

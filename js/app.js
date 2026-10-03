@@ -62,6 +62,13 @@ function elemento(etiqueta, clase, ...hijos) {
   return nodo;
 }
 
+/** Un ícono o símbolo que los lectores de pantalla no tienen que leer. */
+function decorativo(texto = '') {
+  const span = elemento('span', '', texto);
+  span.setAttribute('aria-hidden', 'true');
+  return span;
+}
+
 /** Convierte "El selector `a:hover` ..." en texto con elementos <code>. */
 function textoConCodigo(texto) {
   const fragmento = document.createDocumentFragment();
@@ -85,8 +92,8 @@ function temaDe(titulo) {
 
 function etiquetaDeNivel(nivel) {
   const { nombre, barras } = NIVELES[nivel];
-  const marcas = elemento('span', 'barras');
-  marcas.setAttribute('aria-hidden', 'true');
+  const marcas = decorativo();
+  marcas.className = 'barras';
   for (let i = 1; i <= 2; i++) marcas.append(elemento('i', i <= barras ? 'llena' : ''));
   return elemento('span', `nivel nivel--${nivel === 'básica' ? 'basica' : nivel}`, marcas, elemento('span', 'vh', 'Nivel: '), nombre);
 }
@@ -151,10 +158,7 @@ function renderPregunta() {
   $('#retroalimentacion').replaceChildren();
   $('#retroalimentacion').className = 'retroalimentacion';
   $('#btn-siguiente').hidden = true;
-  $('#btn-siguiente').replaceChildren(
-    ...(cuestionario.esUltima ? ['Ver resultados'] : ['Siguiente ', elemento('span', '', '→')]),
-  );
-  $('#btn-siguiente').lastElementChild?.setAttribute('aria-hidden', 'true');
+  $('#btn-siguiente').replaceChildren(...(cuestionario.esUltima ? ['Ver resultados'] : ['Siguiente ', decorativo('→')]));
 
   actualizarProgreso();
   if (cuestionario.respondida) mostrarCorreccion();
@@ -189,12 +193,11 @@ function mostrarCorreccion() {
     boton.disabled = true;
     if (posicion === correcta) {
       boton.classList.add('es-correcta');
-      marca.replaceChildren(elemento('span', '', '✓ '), acerto ? 'Tu respuesta: correcta' : 'Respuesta correcta');
+      marca.replaceChildren(decorativo('✓ '), acerto ? 'Tu respuesta: correcta' : 'Respuesta correcta');
     } else if (posicion === elegida) {
       boton.classList.add('es-incorrecta');
-      marca.replaceChildren(elemento('span', '', '✗ '), 'Tu respuesta: incorrecta');
+      marca.replaceChildren(decorativo('✗ '), 'Tu respuesta: incorrecta');
     }
-    marca.firstElementChild?.setAttribute('aria-hidden', 'true');
   }
 
   const elegidaRetro = opciones[elegida].retro;
@@ -204,16 +207,15 @@ function mostrarCorreccion() {
   } else {
     if (elegidaRetro) contenido.push(elemento('p', '', elemento('strong', '', 'Tu respuesta: '), textoConCodigo(elegidaRetro)));
     const { texto, retro } = opciones[correcta];
-    contenido.push(
-      elemento('p', '', elemento('strong', '', 'Respuesta correcta: '), textoConCodigo(texto), retro ? ' ' : ''),
-    );
-    if (retro) contenido.at(-1).append(textoConCodigo(retro));
+    contenido.push(elemento('p', '', elemento('strong', '', 'Respuesta correcta: '), textoConCodigo(texto)));
+    if (retro) contenido.push(elemento('p', '', textoConCodigo(retro)));
   }
   const caja = $('#retroalimentacion');
   caja.className = `retroalimentacion retroalimentacion--${acerto ? 'ok' : 'mal'}`;
   caja.replaceChildren(...contenido);
 
   $('#btn-siguiente').hidden = false;
+  visor.habilitarPrueba();
   actualizarProgreso();
 }
 
