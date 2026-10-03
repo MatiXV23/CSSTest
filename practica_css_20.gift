@@ -1,0 +1,150 @@
+// PRACTICA CSS - 20 preguntas (nivel similar al banco esencial)
+
+::Práctica - Fundamentos - Qué significa "cascada"::[html]En el nombre "hojas de estilo en cascada", la palabra cascada se refiere a {
+=las reglas que deciden qué estilo gana cuando varias apuntan al mismo elemento. #Es lo que permite manejar sitios con miles de reglas sin ambigüedad.
+~la forma en que los estilos caen hacia abajo en la pantalla. #No describe un efecto visual.
+~el orden en que el navegador descarga los archivos CSS. #No tiene relación con la descarga.
+~una animación que hace aparecer los elementos de a uno. #No es una animación.
+}
+
+::Práctica - Selectores - Misma regla para varios elementos::[html]Para dar el mismo color a todos los párrafos y a todos los elementos de lista con una sola regla, se escribe {
+=<code>p, li \{ color\: green; \}</code> #La coma separa los selectores de una lista.
+~<code>p li \{ color\: green; \}</code> #El espacio selecciona los <code>li</code> que están dentro de un <code>p</code>.
+~<code>p + li \{ color\: green; \}</code> #El <code>+</code> selecciona un <code>li</code> que viene justo después de un <code>p</code>.
+~<code>p.li \{ color\: green; \}</code> #Selecciona párrafos con la clase <code>li</code>.
+}
+
+::Práctica - Selectores - Clase sola::[html]El selector <code>.special</code>, sin un nombre de elemento adelante, se aplica a {
+=cualquier elemento que tenga la clase <code>special</code>. #Al no indicar un tipo de elemento, sirve para cualquiera.
+~solo los elementos <code>li</code> con la clase <code>special</code>. #Eso sería <code>li.special</code>.
+~el primer elemento del documento que tenga la clase <code>special</code>. #Se aplica a todos los que la tengan.
+~los elementos que están dentro de otro elemento con la clase <code>special</code>. #Eso requiere un combinador descendiente.
+}
+
+::Práctica - Fundamentos - Hoja de estilo interna::[html]Una hoja de estilo interna se escribe {
+=dentro de un elemento <code>style</code> en el <code>head</code> del documento. #Sirve cuando no se puede usar un archivo externo, pero se repite en cada página.
+~en un archivo <code>.css</code> aparte, vinculado con un elemento <code>link</code> desde cada página. #Eso es una hoja externa.
+~dentro del atributo <code>style</code> de cada elemento. #Eso son estilos en línea.
+~al final del archivo CSS principal. #No se escribe en un archivo CSS.
+}
+
+::Práctica - Fundamentos - Comentarios en CSS::[html]Los comentarios en CSS se escriben {
+=entre <code>/*</code> y <code>*/</code>. #Pueden ocupar una o varias líneas.
+~entre <code>&lt;!--</code> y <code>--&gt;</code>. #Esa es la sintaxis de HTML.
+~después de <code>//</code>, hasta el final de la línea. #Esa sintaxis no es válida en CSS.
+~entre dos signos numeral. #No es una sintaxis de comentario en CSS.
+}
+
+::Práctica - Fundamentos - Qué es el DOM::[html]El DOM que arma el navegador a partir del HTML es {
+=una representación en memoria del documento con forma de árbol. #Es donde el CSS se encuentra con el contenido.
+~el archivo CSS ya procesado por el navegador. #El DOM representa el documento HTML.
+~la lista de propiedades CSS que admite el navegador. #No es una lista de propiedades.
+~un servidor que entrega las páginas al navegador. #Existe dentro del navegador.
+}
+
+::Práctica - Fundamentos - Selector desconocido::[html]Si el navegador encuentra un selector que no entiende, {
+=ignora esa regla y continúa con la siguiente. #Lo desconocido se salta sin romper el resto.
+~deja de procesar todo el archivo CSS a partir de esa línea y muestra la página sin estilos. #Solo se descarta esa regla.
+~aplica la regla a todos los elementos de la página. #No se aplica a ningún elemento.
+~muestra el código CSS como texto en la página. #El CSS no se muestra como contenido.
+}
+
+::Práctica - Fundamentos - Poner en cursiva::[html]Para poner en cursiva un encabezado <code>h2</code> se escribe {
+=<code>font-style\: italic;</code> #Controla si la letra es normal o cursiva.
+~<code>font-weight\: italic;</code> #Controla el grosor, no la inclinación.
+~<code>text-decoration\: italic;</code> #Controla líneas como el subrayado.
+~<code>font-family\: italic;</code> #Define la tipografía.
+}
+
+::Práctica - Selectores - Selector de ID::[html]El selector <code>\#principal</code> selecciona {
+=el elemento cuyo atributo <code>id</code> vale <code>principal</code>. #El numeral indica un selector de ID.
+~todos los elementos que tienen la clase <code>principal</code>. #Para clases se usa un punto.
+~los elementos HTML que se llaman <code>principal</code>. #Eso sería un selector de tipo.
+~el primer elemento que aparece en la página. #No depende de la posición.
+}
+
+::Práctica - Selectores - Valor exacto de un atributo::[html]El selector <code>input[type\="checkbox"]</code> selecciona {
+=los <code>input</code> cuyo atributo <code>type</code> vale exactamente <code>checkbox</code>. #Compara el valor completo del atributo.
+~todos los <code>input</code> que tienen algún atributo <code>type</code>, sin importar cuál sea su valor. #Eso sería <code>input[type]</code>.
+~los <code>input</code> que tienen la palabra checkbox en cualquier atributo. #Solo mira el atributo indicado.
+~los elementos <code>checkbox</code> que están dentro de un <code>input</code>. #Los corchetes se refieren a atributos.
+}
+
+::Práctica - Selectores - Valor que termina con::[html]Observá el HTML y la regla\:<pre>&lt;li class\="alerta-box"&gt;Alerta&lt;/li&gt;
+&lt;li class\="box-aviso"&gt;Aviso&lt;/li&gt;
+&lt;li class\="info-box"&gt;Info&lt;/li&gt;
+li[class$\="-box"] \{ color\: red; \}</pre> ¿Cuántos elementos se ponen rojos? {
+=2 #Coinciden los dos valores que terminan en <code>-box</code>.
+~3 #El valor del medio empieza con <code>box-</code>, pero no termina con <code>-box</code>.
+~1 #Hay dos valores que cumplen la condición.
+~0 #La coincidencia es por el final del valor, no por el valor completo.
+}
+
+::Práctica - Pseudoclases - Pasar el mouse::[html]Para cambiar el color de un enlace cuando se le pasa el mouse por encima se usa {
+=<code>a\:hover</code> #Es una pseudoclase de acción de usuario.
+~<code>a\:\:hover</code> #Los dos pares de dos puntos son para pseudoelementos.
+~<code>a.hover</code> #Eso selecciona enlaces con la clase <code>hover</code>.
+~<code>a[hover]</code> #Eso selecciona enlaces con un atributo <code>hover</code>.
+}
+
+::Práctica - Pseudoclases - Primera línea::[html]El selector <code>p\:\:first-line</code> selecciona {
+=la primera línea de cada párrafo, aunque cambie el ancho de la ventana. #Se ajusta solo a dónde termina la línea.
+~el primer párrafo del documento. #Selecciona una línea de cada párrafo.
+~la primera palabra de cada párrafo. #Selecciona la línea completa.
+~los párrafos que aparecen en la primera línea visible de la página del navegador. #No depende de la posición en pantalla.
+}
+
+::Práctica - Combinadores - Hijo directo::[html]El selector <code>article &gt; p</code> selecciona {
+=los <code>p</code> que son hijos directos de un <code>article</code>. #El <code>&gt;</code> no alcanza a los nietos.
+~todos los <code>p</code> dentro de un <code>article</code>, a cualquier profundidad. #Eso es el combinador descendiente.
+~los <code>p</code> que vienen justo después de un <code>article</code>. #Eso es el combinador <code>+</code>.
+~los <code>article</code> que contienen algún <code>p</code>. #El estilo se aplica al <code>p</code>, no al <code>article</code>.
+}
+
+::Práctica - Combinadores - Hermanos generales::[html]El selector <code>h1 \~ p</code> selecciona {
+=todos los <code>p</code> hermanos que vienen después del <code>h1</code>, aunque no estén pegados a él. #No exige que estén inmediatamente después.
+~solo el <code>p</code> que viene inmediatamente después del <code>h1</code>. #Eso es el combinador <code>+</code>.
+~los <code>p</code> que están dentro del <code>h1</code>. #Eso sería un descendiente.
+~los <code>p</code> que aparecen antes del <code>h1</code>. #Selecciona los que vienen después.
+}
+
+::Práctica - Modelo de caja - Bloque::[html]Un elemento con <code>display\: block</code> {
+=empieza en una línea nueva y respeta <code>width</code> y <code>height</code>. #Así se comportan por defecto elementos como <code>h1</code> y <code>p</code>.
+~se acomoda en la misma línea y no respeta el <code>width</code>. #Eso describe una caja en línea.
+~solo puede contener texto. #Puede contener otros elementos.
+~no admite márgenes. #Admite márgenes, rellenos y bordes.
+}
+
+::Práctica - Modelo de caja - Ancho con border-box::[html]Observá la regla\:<pre>.caja \{
+  box-sizing\: border-box;
+  width\: 200px;
+  padding\: 10px;
+  border\: 5px solid black;
+\}</pre> ¿Cuánto mide de ancho la caja visible? {
+=200px #En el modelo alternativo, el <code>width</code> ya incluye relleno y borde.
+~230px #Suma relleno y borde como en el modelo estándar.
+~220px #En este modelo no se suma nada al <code>width</code>.
+~170px #Ese es el ancho que le queda al contenido.
+}
+
+::Práctica - Cascada - Herencia del color::[html]Un <code>div</code> tiene <code>color\: blue</code> y adentro hay un <code>p</code> sin estilos propios. El <code>p</code> se ve {
+=azul, porque <code>color</code> se hereda. #Los hijos toman el color del padre salvo que tengan uno propio.
+~negro, porque <code>color</code> no se hereda. #Es una de las propiedades que se heredan.
+~azul, pero solo si tiene una clase. #No necesita ninguna clase.
+~azul y con el mismo borde del <code>div</code>. #El borde no se hereda.
+}
+
+::Práctica - Cascada - Estilo en línea contra ID::[html]Observá el CSS y el HTML\:<pre>\#titulo \{ color\: green; \}
+&lt;h1 id\="titulo" style\="color\: orange;"&gt;Hola&lt;/h1&gt;</pre> ¿De qué color se ve el título? {
+=Naranja, porque el estilo en línea gana sobre los estilos normales. #El atributo <code>style</code> tiene prioridad sin importar la especificidad.
+~Verde, porque el selector de ID es el más específico de todos. #El estilo en línea está por encima del ID.
+~Verde, porque la regla CSS se lee antes que el HTML. #El orden de lectura no decide aquí.
+~Negro, porque las dos declaraciones se anulan. #Una de las dos se aplica.
+}
+
+::Práctica - Valores - Unidad em::[html]Usada en el tamaño de letra, la unidad <code>em</code> es relativa a {
+=el tamaño de letra del elemento padre. #Por eso se acumula en elementos anidados.
+~el tamaño de letra del elemento raíz. #Eso describe <code>rem</code>.
+~el ancho de la ventana del navegador. #Eso describe <code>vw</code>.
+~la altura total de la pantalla del dispositivo. #No depende de la pantalla.
+}

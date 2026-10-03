@@ -1,0 +1,591 @@
+[
+  {
+    "id": "practica-fundamentos-que-significa-cascada",
+    "titulo": "Práctica - Fundamentos - Qué significa \"cascada\"",
+    "nivel": "básica",
+    "enunciado": "En el nombre \"hojas de estilo en cascada\", la palabra cascada se refiere a",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "las reglas que deciden qué estilo gana cuando varias apuntan al mismo elemento.",
+        "correcta": true,
+        "retro": "Es lo que permite manejar sitios con miles de reglas sin ambigüedad."
+      },
+      {
+        "texto": "la forma en que los estilos caen hacia abajo en la pantalla.",
+        "correcta": false,
+        "retro": "No describe un efecto visual."
+      },
+      {
+        "texto": "el orden en que el navegador descarga los archivos CSS.",
+        "correcta": false,
+        "retro": "No tiene relación con la descarga."
+      },
+      {
+        "texto": "una animación que hace aparecer los elementos de a uno.",
+        "correcta": false,
+        "retro": "No es una animación."
+      }
+    ]
+  },
+  {
+    "id": "practica-selectores-misma-regla-para-varios-elementos",
+    "titulo": "Práctica - Selectores - Misma regla para varios elementos",
+    "nivel": "básica",
+    "enunciado": "Para dar el mismo color a todos los párrafos y a todos los elementos de lista con una sola regla, se escribe",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "`p, li { color: green; }`",
+        "correcta": true,
+        "retro": "La coma separa los selectores de una lista."
+      },
+      {
+        "texto": "`p li { color: green; }`",
+        "correcta": false,
+        "retro": "El espacio selecciona los `li` que están dentro de un `p`."
+      },
+      {
+        "texto": "`p + li { color: green; }`",
+        "correcta": false,
+        "retro": "El `+` selecciona un `li` que viene justo después de un `p`."
+      },
+      {
+        "texto": "`p.li { color: green; }`",
+        "correcta": false,
+        "retro": "Selecciona párrafos con la clase `li`."
+      }
+    ]
+  },
+  {
+    "id": "practica-selectores-clase-sola",
+    "titulo": "Práctica - Selectores - Clase sola",
+    "nivel": "básica",
+    "enunciado": "El selector `.special`, sin un nombre de elemento adelante, se aplica a",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "cualquier elemento que tenga la clase `special`.",
+        "correcta": true,
+        "retro": "Al no indicar un tipo de elemento, sirve para cualquiera."
+      },
+      {
+        "texto": "solo los elementos `li` con la clase `special`.",
+        "correcta": false,
+        "retro": "Eso sería `li.special`."
+      },
+      {
+        "texto": "el primer elemento del documento que tenga la clase `special`.",
+        "correcta": false,
+        "retro": "Se aplica a todos los que la tengan."
+      },
+      {
+        "texto": "los elementos que están dentro de otro elemento con la clase `special`.",
+        "correcta": false,
+        "retro": "Eso requiere un combinador descendiente."
+      }
+    ]
+  },
+  {
+    "id": "practica-fundamentos-hoja-de-estilo-interna",
+    "titulo": "Práctica - Fundamentos - Hoja de estilo interna",
+    "nivel": "básica",
+    "enunciado": "Una hoja de estilo interna se escribe",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "dentro de un elemento `style` en el `head` del documento.",
+        "correcta": true,
+        "retro": "Sirve cuando no se puede usar un archivo externo, pero se repite en cada página."
+      },
+      {
+        "texto": "en un archivo `.css` aparte, vinculado con un elemento `link` desde cada página.",
+        "correcta": false,
+        "retro": "Eso es una hoja externa."
+      },
+      {
+        "texto": "dentro del atributo `style` de cada elemento.",
+        "correcta": false,
+        "retro": "Eso son estilos en línea."
+      },
+      {
+        "texto": "al final del archivo CSS principal.",
+        "correcta": false,
+        "retro": "No se escribe en un archivo CSS."
+      }
+    ]
+  },
+  {
+    "id": "practica-fundamentos-comentarios-en-css",
+    "titulo": "Práctica - Fundamentos - Comentarios en CSS",
+    "nivel": "básica",
+    "enunciado": "Los comentarios en CSS se escriben",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "entre `/*` y `*/`.",
+        "correcta": true,
+        "retro": "Pueden ocupar una o varias líneas."
+      },
+      {
+        "texto": "entre `<!--` y `-->`.",
+        "correcta": false,
+        "retro": "Esa es la sintaxis de HTML."
+      },
+      {
+        "texto": "después de `//`, hasta el final de la línea.",
+        "correcta": false,
+        "retro": "Esa sintaxis no es válida en CSS."
+      },
+      {
+        "texto": "entre dos signos numeral.",
+        "correcta": false,
+        "retro": "No es una sintaxis de comentario en CSS."
+      }
+    ]
+  },
+  {
+    "id": "practica-fundamentos-que-es-el-dom",
+    "titulo": "Práctica - Fundamentos - Qué es el DOM",
+    "nivel": "básica",
+    "enunciado": "El DOM que arma el navegador a partir del HTML es",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "una representación en memoria del documento con forma de árbol.",
+        "correcta": true,
+        "retro": "Es donde el CSS se encuentra con el contenido."
+      },
+      {
+        "texto": "el archivo CSS ya procesado por el navegador.",
+        "correcta": false,
+        "retro": "El DOM representa el documento HTML."
+      },
+      {
+        "texto": "la lista de propiedades CSS que admite el navegador.",
+        "correcta": false,
+        "retro": "No es una lista de propiedades."
+      },
+      {
+        "texto": "un servidor que entrega las páginas al navegador.",
+        "correcta": false,
+        "retro": "Existe dentro del navegador."
+      }
+    ]
+  },
+  {
+    "id": "practica-fundamentos-selector-desconocido",
+    "titulo": "Práctica - Fundamentos - Selector desconocido",
+    "nivel": "básica",
+    "enunciado": "Si el navegador encuentra un selector que no entiende,",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "ignora esa regla y continúa con la siguiente.",
+        "correcta": true,
+        "retro": "Lo desconocido se salta sin romper el resto."
+      },
+      {
+        "texto": "deja de procesar todo el archivo CSS a partir de esa línea y muestra la página sin estilos.",
+        "correcta": false,
+        "retro": "Solo se descarta esa regla."
+      },
+      {
+        "texto": "aplica la regla a todos los elementos de la página.",
+        "correcta": false,
+        "retro": "No se aplica a ningún elemento."
+      },
+      {
+        "texto": "muestra el código CSS como texto en la página.",
+        "correcta": false,
+        "retro": "El CSS no se muestra como contenido."
+      }
+    ]
+  },
+  {
+    "id": "practica-fundamentos-poner-en-cursiva",
+    "titulo": "Práctica - Fundamentos - Poner en cursiva",
+    "nivel": "básica",
+    "enunciado": "Para poner en cursiva un encabezado `h2` se escribe",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "`font-style: italic;`",
+        "correcta": true,
+        "retro": "Controla si la letra es normal o cursiva."
+      },
+      {
+        "texto": "`font-weight: italic;`",
+        "correcta": false,
+        "retro": "Controla el grosor, no la inclinación."
+      },
+      {
+        "texto": "`text-decoration: italic;`",
+        "correcta": false,
+        "retro": "Controla líneas como el subrayado."
+      },
+      {
+        "texto": "`font-family: italic;`",
+        "correcta": false,
+        "retro": "Define la tipografía."
+      }
+    ]
+  },
+  {
+    "id": "practica-selectores-selector-de-id",
+    "titulo": "Práctica - Selectores - Selector de ID",
+    "nivel": "básica",
+    "enunciado": "El selector `#principal` selecciona",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "el elemento cuyo atributo `id` vale `principal`.",
+        "correcta": true,
+        "retro": "El numeral indica un selector de ID."
+      },
+      {
+        "texto": "todos los elementos que tienen la clase `principal`.",
+        "correcta": false,
+        "retro": "Para clases se usa un punto."
+      },
+      {
+        "texto": "los elementos HTML que se llaman `principal`.",
+        "correcta": false,
+        "retro": "Eso sería un selector de tipo."
+      },
+      {
+        "texto": "el primer elemento que aparece en la página.",
+        "correcta": false,
+        "retro": "No depende de la posición."
+      }
+    ]
+  },
+  {
+    "id": "practica-selectores-valor-exacto-de-un-atributo",
+    "titulo": "Práctica - Selectores - Valor exacto de un atributo",
+    "nivel": "básica",
+    "enunciado": "El selector `input[type=\"checkbox\"]` selecciona",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "los `input` cuyo atributo `type` vale exactamente `checkbox`.",
+        "correcta": true,
+        "retro": "Compara el valor completo del atributo."
+      },
+      {
+        "texto": "todos los `input` que tienen algún atributo `type`, sin importar cuál sea su valor.",
+        "correcta": false,
+        "retro": "Eso sería `input[type]`."
+      },
+      {
+        "texto": "los `input` que tienen la palabra checkbox en cualquier atributo.",
+        "correcta": false,
+        "retro": "Solo mira el atributo indicado."
+      },
+      {
+        "texto": "los elementos `checkbox` que están dentro de un `input`.",
+        "correcta": false,
+        "retro": "Los corchetes se refieren a atributos."
+      }
+    ]
+  },
+  {
+    "id": "practica-selectores-valor-que-termina-con",
+    "titulo": "Práctica - Selectores - Valor que termina con",
+    "nivel": "media",
+    "enunciado": "Observá el HTML y la regla:\n¿Cuántos elementos se ponen rojos?",
+    "codigo": {
+      "css": "li[class$=\"-box\"] { color: red; }",
+      "html": "<ul>\n  <li class=\"alerta-box\">Alerta</li>\n  <li class=\"box-aviso\">Aviso</li>\n  <li class=\"info-box\">Info</li>\n</ul>"
+    },
+    "opciones": [
+      {
+        "texto": "2",
+        "correcta": true,
+        "retro": "Coinciden los dos valores que terminan en `-box`."
+      },
+      {
+        "texto": "3",
+        "correcta": false,
+        "retro": "El valor del medio empieza con `box-`, pero no termina con `-box`."
+      },
+      {
+        "texto": "1",
+        "correcta": false,
+        "retro": "Hay dos valores que cumplen la condición."
+      },
+      {
+        "texto": "0",
+        "correcta": false,
+        "retro": "La coincidencia es por el final del valor, no por el valor completo."
+      }
+    ]
+  },
+  {
+    "id": "practica-pseudoclases-pasar-el-mouse",
+    "titulo": "Práctica - Pseudoclases - Pasar el mouse",
+    "nivel": "básica",
+    "enunciado": "Para cambiar el color de un enlace cuando se le pasa el mouse por encima se usa",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "`a:hover`",
+        "correcta": true,
+        "retro": "Es una pseudoclase de acción de usuario."
+      },
+      {
+        "texto": "`a::hover`",
+        "correcta": false,
+        "retro": "Los dos pares de dos puntos son para pseudoelementos."
+      },
+      {
+        "texto": "`a.hover`",
+        "correcta": false,
+        "retro": "Eso selecciona enlaces con la clase `hover`."
+      },
+      {
+        "texto": "`a[hover]`",
+        "correcta": false,
+        "retro": "Eso selecciona enlaces con un atributo `hover`."
+      }
+    ]
+  },
+  {
+    "id": "practica-pseudoclases-primera-linea",
+    "titulo": "Práctica - Pseudoclases - Primera línea",
+    "nivel": "básica",
+    "enunciado": "El selector `p::first-line` selecciona",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "la primera línea de cada párrafo, aunque cambie el ancho de la ventana.",
+        "correcta": true,
+        "retro": "Se ajusta solo a dónde termina la línea."
+      },
+      {
+        "texto": "el primer párrafo del documento.",
+        "correcta": false,
+        "retro": "Selecciona una línea de cada párrafo."
+      },
+      {
+        "texto": "la primera palabra de cada párrafo.",
+        "correcta": false,
+        "retro": "Selecciona la línea completa."
+      },
+      {
+        "texto": "los párrafos que aparecen en la primera línea visible de la página del navegador.",
+        "correcta": false,
+        "retro": "No depende de la posición en pantalla."
+      }
+    ]
+  },
+  {
+    "id": "practica-combinadores-hijo-directo",
+    "titulo": "Práctica - Combinadores - Hijo directo",
+    "nivel": "básica",
+    "enunciado": "El selector `article > p` selecciona",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "los `p` que son hijos directos de un `article`.",
+        "correcta": true,
+        "retro": "El `>` no alcanza a los nietos."
+      },
+      {
+        "texto": "todos los `p` dentro de un `article`, a cualquier profundidad.",
+        "correcta": false,
+        "retro": "Eso es el combinador descendiente."
+      },
+      {
+        "texto": "los `p` que vienen justo después de un `article`.",
+        "correcta": false,
+        "retro": "Eso es el combinador `+`."
+      },
+      {
+        "texto": "los `article` que contienen algún `p`.",
+        "correcta": false,
+        "retro": "El estilo se aplica al `p`, no al `article`."
+      }
+    ]
+  },
+  {
+    "id": "practica-combinadores-hermanos-generales",
+    "titulo": "Práctica - Combinadores - Hermanos generales",
+    "nivel": "básica",
+    "enunciado": "El selector `h1 ~ p` selecciona",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "todos los `p` hermanos que vienen después del `h1`, aunque no estén pegados a él.",
+        "correcta": true,
+        "retro": "No exige que estén inmediatamente después."
+      },
+      {
+        "texto": "solo el `p` que viene inmediatamente después del `h1`.",
+        "correcta": false,
+        "retro": "Eso es el combinador `+`."
+      },
+      {
+        "texto": "los `p` que están dentro del `h1`.",
+        "correcta": false,
+        "retro": "Eso sería un descendiente."
+      },
+      {
+        "texto": "los `p` que aparecen antes del `h1`.",
+        "correcta": false,
+        "retro": "Selecciona los que vienen después."
+      }
+    ]
+  },
+  {
+    "id": "practica-modelo-de-caja-bloque",
+    "titulo": "Práctica - Modelo de caja - Bloque",
+    "nivel": "básica",
+    "enunciado": "Un elemento con `display: block`",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "empieza en una línea nueva y respeta `width` y `height`.",
+        "correcta": true,
+        "retro": "Así se comportan por defecto elementos como `h1` y `p`."
+      },
+      {
+        "texto": "se acomoda en la misma línea y no respeta el `width`.",
+        "correcta": false,
+        "retro": "Eso describe una caja en línea."
+      },
+      {
+        "texto": "solo puede contener texto.",
+        "correcta": false,
+        "retro": "Puede contener otros elementos."
+      },
+      {
+        "texto": "no admite márgenes.",
+        "correcta": false,
+        "retro": "Admite márgenes, rellenos y bordes."
+      }
+    ]
+  },
+  {
+    "id": "practica-modelo-de-caja-ancho-con-border-box",
+    "titulo": "Práctica - Modelo de caja - Ancho con border-box",
+    "nivel": "media",
+    "enunciado": "Observá la regla:\n¿Cuánto mide de ancho la caja visible?",
+    "codigo": {
+      "css": ".caja {\n  box-sizing: border-box;\n  width: 200px;\n  padding: 10px;\n  border: 5px solid black;\n}",
+      "html": "<div class=\"caja\">Contenido</div>"
+    },
+    "opciones": [
+      {
+        "texto": "200px",
+        "correcta": true,
+        "retro": "En el modelo alternativo, el `width` ya incluye relleno y borde."
+      },
+      {
+        "texto": "230px",
+        "correcta": false,
+        "retro": "Suma relleno y borde como en el modelo estándar."
+      },
+      {
+        "texto": "220px",
+        "correcta": false,
+        "retro": "En este modelo no se suma nada al `width`."
+      },
+      {
+        "texto": "170px",
+        "correcta": false,
+        "retro": "Ese es el ancho que le queda al contenido."
+      }
+    ]
+  },
+  {
+    "id": "practica-cascada-herencia-del-color",
+    "titulo": "Práctica - Cascada - Herencia del color",
+    "nivel": "básica",
+    "enunciado": "Un `div` tiene `color: blue` y adentro hay un `p` sin estilos propios. El `p` se ve",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "azul, porque `color` se hereda.",
+        "correcta": true,
+        "retro": "Los hijos toman el color del padre salvo que tengan uno propio."
+      },
+      {
+        "texto": "negro, porque `color` no se hereda.",
+        "correcta": false,
+        "retro": "Es una de las propiedades que se heredan."
+      },
+      {
+        "texto": "azul, pero solo si tiene una clase.",
+        "correcta": false,
+        "retro": "No necesita ninguna clase."
+      },
+      {
+        "texto": "azul y con el mismo borde del `div`.",
+        "correcta": false,
+        "retro": "El borde no se hereda."
+      }
+    ]
+  },
+  {
+    "id": "practica-cascada-estilo-en-linea-contra-id",
+    "titulo": "Práctica - Cascada - Estilo en línea contra ID",
+    "nivel": "media",
+    "enunciado": "Observá el CSS y el HTML:\n¿De qué color se ve el título?",
+    "codigo": {
+      "css": "#titulo { color: green; }",
+      "html": "<h1 id=\"titulo\" style=\"color: orange;\">Hola</h1>"
+    },
+    "opciones": [
+      {
+        "texto": "Naranja, porque el estilo en línea gana sobre los estilos normales.",
+        "correcta": true,
+        "retro": "El atributo `style` tiene prioridad sin importar la especificidad."
+      },
+      {
+        "texto": "Verde, porque el selector de ID es el más específico de todos.",
+        "correcta": false,
+        "retro": "El estilo en línea está por encima del ID."
+      },
+      {
+        "texto": "Verde, porque la regla CSS se lee antes que el HTML.",
+        "correcta": false,
+        "retro": "El orden de lectura no decide aquí."
+      },
+      {
+        "texto": "Negro, porque las dos declaraciones se anulan.",
+        "correcta": false,
+        "retro": "Una de las dos se aplica."
+      }
+    ]
+  },
+  {
+    "id": "practica-valores-unidad-em",
+    "titulo": "Práctica - Valores - Unidad em",
+    "nivel": "básica",
+    "enunciado": "Usada en el tamaño de letra, la unidad `em` es relativa a",
+    "codigo": null,
+    "opciones": [
+      {
+        "texto": "el tamaño de letra del elemento padre.",
+        "correcta": true,
+        "retro": "Por eso se acumula en elementos anidados."
+      },
+      {
+        "texto": "el tamaño de letra del elemento raíz.",
+        "correcta": false,
+        "retro": "Eso describe `rem`."
+      },
+      {
+        "texto": "el ancho de la ventana del navegador.",
+        "correcta": false,
+        "retro": "Eso describe `vw`."
+      },
+      {
+        "texto": "la altura total de la pantalla del dispositivo.",
+        "correcta": false,
+        "retro": "No depende de la pantalla."
+      }
+    ]
+  }
+]
