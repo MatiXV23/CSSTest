@@ -80,8 +80,8 @@ El archivo `.nojekyll` le indica a GitHub que no procese el sitio con Jekyll y l
 **Opción B: con GitHub Actions** (ya incluida)
 
 1. En **Settings → Pages → Build and deployment → Source** elegí **GitHub Actions**.
-2. El workflow `.github/workflows/pages.yml` publica el sitio cada vez que se sube código a la rama
-   por defecto. También se puede lanzar a mano desde la pestaña **Actions**.
+2. El workflow `.github/workflows/pages.yml` publica el sitio cada vez que se sube código a `main`.
+   También se puede lanzar a mano desde la pestaña **Actions**.
 
 ## Para mirar en el código
 
