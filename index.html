@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Práctica de CSS</title>
+  <meta name="description" content="Cuestionario de práctica de CSS con ejemplos que se pueden editar y probar en vivo.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <main class="contenedor">
+
+    <!-- Mientras se cargan las preguntas. Si tarda, aparece la ayuda (solo con CSS). -->
+    <div id="carga" class="tarjeta carga" role="status">
+      <p id="mensaje-carga">Cargando preguntas…</p>
+      <p class="carga-ayuda">
+        ¿No carga? Si abriste <code>index.html</code> directamente desde la carpeta, levantá un servidor
+        local (por ejemplo <code>python -m http.server</code>) y entrá por <code>http://localhost</code>.
+      </p>
+      <noscript><p>Este cuestionario necesita JavaScript para funcionar.</p></noscript>
+    </div>
+
+    <!-- Pantalla de inicio -->
+    <section id="inicio" class="pantalla tarjeta" aria-labelledby="titulo-inicio" hidden>
+      <p class="sobretitulo"><img src="favicon.svg" alt="" width="24" height="24">Práctica de CSS</p>
+      <h1 id="titulo-inicio" tabindex="-1">Cuestionario de práctica</h1>
+      <p class="bajada">
+        Repasá selectores, cascada, modelo de caja y unidades con preguntas de opción múltiple.
+        En las preguntas con código vas a poder editar el ejemplo y ver el resultado en vivo.
+      </p>
+      <ul class="cifras" role="list">
+        <li><strong id="cantidad-total">0</strong> preguntas</li>
+        <li><strong id="cantidad-basicas">0</strong> básicas</li>
+        <li><strong id="cantidad-medias">0</strong> con código</li>
+      </ul>
+      <button type="button" id="btn-empezar" class="btn primario">Empezar</button>
+
+      <h2 class="subtitulo">Atajos de teclado</h2>
+      <dl class="atajos">
+        <div><dt><kbd>Tab</kbd></dt><dd>pasar de una opción a otra</dd></div>
+        <div><dt><kbd>Enter</kbd></dt><dd>responder con la opción enfocada</dd></div>
+        <div><dt><kbd>1</kbd> a <kbd>4</kbd></dt><dd>elegir una opción directamente</dd></div>
+        <div><dt><kbd>→</kbd></dt><dd>pasar a la pregunta siguiente</dd></div>
+      </dl>
+    </section>
+
+    <!-- Cuestionario -->
+    <section id="cuestionario" class="pantalla" aria-labelledby="numero-pregunta" hidden>
+      <header class="cabecera">
+        <div class="cabecera-fila">
+          <h2 id="numero-pregunta" tabindex="-1"></h2>
+          <p id="aciertos" class="aciertos"></p>
+        </div>
+        <progress id="progreso" aria-labelledby="numero-pregunta"></progress>
+      </header>
+
+      <article class="tarjeta pregunta">
+        <div class="etiquetas">
+          <span id="tema" class="tema"></span>
+          <span id="nivel"></span>
+          <span id="modo" class="modo" hidden>Repaso de falladas</span>
+        </div>
+
+        <div id="enunciado" class="enunciado"></div>
+
+        <section id="codigo" class="codigo" aria-labelledby="titulo-codigo" hidden>
+          <h3 id="titulo-codigo" class="vh">Código de la pregunta</h3>
+          <div class="paneles">
+            <figure class="panel" data-lenguaje="css">
+              <figcaption id="rotulo-css">CSS</figcaption>
+              <div class="panel-cuerpo">
+                <pre class="fuente"><code></code></pre>
+              </div>
+            </figure>
+            <figure class="panel" data-lenguaje="html">
+              <figcaption id="rotulo-html">HTML</figcaption>
+              <div class="panel-cuerpo">
+                <pre class="fuente"><code></code></pre>
+              </div>
+            </figure>
+          </div>
+        </section>
+
+        <ol id="opciones" class="opciones" role="list" aria-label="Opciones"></ol>
+
+        <div id="retroalimentacion" class="retroalimentacion" role="status" aria-live="polite"></div>
+
+        <div class="pie-pregunta">
+          <p class="ayuda">Elegí con <kbd>1</kbd>–<kbd>4</kbd> o con <kbd>Tab</kbd> y <kbd>Enter</kbd>.</p>
+          <button type="button" id="btn-siguiente" class="btn primario" aria-keyshortcuts="ArrowRight" hidden></button>
+        </div>
+      </article>
+
+      <footer class="pie-cuestionario">
+        <button type="button" id="btn-reiniciar" class="btn enlace">Empezar de cero</button>
+      </footer>
+    </section>
+
+    <!-- Resultados -->
+    <section id="resultados" class="pantalla" aria-labelledby="titulo-resultados" hidden>
+      <div class="tarjeta resumen">
+        <h2 id="titulo-resultados" tabindex="-1">Tu puntaje</h2>
+        <p class="puntaje"><span id="puntaje"></span><span class="puntaje-total"> / <span id="puntaje-total"></span></span></p>
+        <p id="porcentaje" class="porcentaje"></p>
+        <p id="mensaje" class="mensaje"></p>
+        <div class="acciones">
+          <button type="button" id="btn-reintentar" class="btn primario">Reintentar</button>
+          <button type="button" id="btn-falladas" class="btn">Practicar solo las falladas</button>
+        </div>
+      </div>
+
+      <section class="falladas" aria-labelledby="titulo-falladas">
+        <h2 id="titulo-falladas">Preguntas falladas</h2>
+        <p id="sin-falladas" class="sin-falladas" hidden>¡No fallaste ninguna! Respondiste todo bien.</p>
+        <ol id="lista-falladas" class="lista-falladas" role="list"></ol>
+      </section>
+    </section>
+
+  </main>
+
+  <dialog id="dialogo-reiniciar" aria-labelledby="titulo-dialogo" aria-describedby="texto-dialogo">
+    <form method="dialog">
+      <h2 id="titulo-dialogo">¿Empezar de cero?</h2>
+      <p id="texto-dialogo">Se va a borrar tu progreso y las preguntas se van a mezclar de nuevo.</p>
+      <div class="acciones">
+        <button value="cancelar" class="btn" autofocus>Cancelar</button>
+        <button value="confirmar" class="btn primario">Sí, empezar de cero</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Plantillas que app.js clona y completa -->
+  <template id="plantilla-opcion">
+    <li>
+      <button type="button" class="opcion">
+        <span class="numero" aria-hidden="true"></span>
+        <span class="opcion-cuerpo">
+          <span class="texto"></span>
+          <span class="marca"></span>
+        </span>
+      </button>
+    </li>
+  </template>
+
+  <template id="plantilla-fallada">
+    <li class="tarjeta fallada">
+      <div class="etiquetas">
+        <span class="numero-fallada"></span>
+        <span class="tema"></span>
+      </div>
+      <div class="enunciado"></div>
+      <details class="codigo-fallada" hidden>
+        <summary>Ver el código</summary>
+        <div class="codigo-fallada-bloques"></div>
+      </details>
+      <dl class="respuestas">
+        <div class="respuesta respuesta--mal">
+          <dt>Tu respuesta</dt>
+          <dd><span class="texto"></span><span class="explicacion"></span></dd>
+        </div>
+        <div class="respuesta respuesta--ok">
+          <dt>Respuesta correcta</dt>
+          <dd><span class="texto"></span><span class="explicacion"></span></dd>
+        </div>
+      </dl>
+    </li>
+  </template>
+</body>
+</html>
